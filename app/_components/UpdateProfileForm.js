@@ -1,7 +1,10 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 
 export default function UpdateProfileForm({ children }) {
+  const [count, setCount] = useState(0);
   const countryFlag = "pt.jpg";
+  const nationality = "portugal";
   return (
     <form className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col">
       <div className="space-y-2">
