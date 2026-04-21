@@ -4,7 +4,7 @@ function loading() {
   return (
     <div className="grid items-center justify-center">
       <Spinner />
-      <p className="text-xl text-center"> Loading cabins data....</p>
+      <p className="text-xl text-center"> Loading cabin data....</p>
     </div>
   );
 }

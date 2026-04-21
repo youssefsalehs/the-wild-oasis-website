@@ -1,7 +1,10 @@
+import { Suspense } from "react";
+import CabinsList from "../_components/CabinList";
+import Spinner from "../_components/Spinner";
+
 export const metadata = {
   title: "Cabins",
 };
-
 export default function MyComponent() {
   return (
     <div>
@@ -16,6 +19,9 @@ export default function MyComponent() {
         home away from home. The perfect spot for a peaceful, calm vacation.
         Welcome to paradise.
       </p>
+      <Suspense fallback={<Spinner />}>
+        <CabinsList />
+      </Suspense>
     </div>
   );
 }
