@@ -1,10 +1,16 @@
 import ReservationCard from "@/app/_components/ReservationCard";
-import { bookings } from "@/app/_constants/constant";
-
+import { auth } from "@/app/_lib/auth";
+import { getBookings } from "@/app/_lib/data-service";
+import { unstable_noStore as noStore } from "next/cache";
+// import { bookings } from "@/app/_constants/constant";
+export const revalidate = 0;
 export const metadata = {
   title: "Reservations",
 };
-export default function Page() {
+export default async function Page() {
+  noStore();
+  const session = await auth();
+  const bookings = await getBookings(session.user.guestId);
   return (
     <div>
       <h2 className="font-semibold text-2xl text-accent-400 mb-7">
