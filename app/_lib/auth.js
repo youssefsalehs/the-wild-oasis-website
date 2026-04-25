@@ -9,7 +9,7 @@ const authOptions = {
     }),
   ],
   callbacks: {
-    authorized({ auth, req }) {
+    authorized({ auth, request }) {
       return !!auth?.user;
     },
     async signIn({ user }) {
