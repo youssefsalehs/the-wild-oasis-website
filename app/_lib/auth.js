@@ -10,7 +10,13 @@ const authOptions = {
   ],
   callbacks: {
     authorized({ auth, request }) {
-      return !!auth?.user;
+      const isLoggedIn = !!auth?.user;
+
+      const isProtected = request.nextUrl.pathname.startsWith("/account");
+
+      if (isProtected && !isLoggedIn) return false;
+
+      return true;
     },
     async signIn({ user }) {
       try {
