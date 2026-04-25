@@ -6,6 +6,7 @@ import {
   updateGuest as updateGuestApi,
   deleteBooking as deleteBookingApi,
   updateBooking as updateBookingApi,
+  createBooking as createBookingApi,
   getBookings,
 } from "./data-service";
 import { redirect } from "next/navigation";
@@ -47,6 +48,24 @@ export const deleteBooking = async (bookingId) => {
     throw new Error("you're not allowed to delete this booking");
   deleteBookingApi(bookingId);
   revalidatePath("/account/reservations");
+};
+export const createBooking = async (bookingData, formData) => {
+  const session = await auth();
+  if (!session) throw new Error("you must be logged in");
+  const newBooking = {
+    ...bookingData,
+    guestId: session.user.guestId,
+    numGuests: Number(formData.get("numGuests")),
+    observations: formData.get("observations").slice(0, 1000),
+    extrasPrice: 0,
+    isPaid: false,
+    totalPrice: bookingData.cabinPrice,
+    hasBreakfast: false,
+    status: "unconfirmed",
+  };
+  console.log(newBooking);
+  createBookingApi(newBooking);
+  revalidatePath(`/cabins/${bookingData.cabinId}`);
 };
 export const signInAction = async () => {
   await signIn("google", { redirectTo: "/account" });
