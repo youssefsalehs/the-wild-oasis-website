@@ -1,15 +1,15 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { auth, signIn, signOut } from "./auth";
 import {
-  updateGuest as updateGuestApi,
-  deleteBooking as deleteBookingApi,
-  updateBooking as updateBookingApi,
   createBooking as createBookingApi,
+  deleteBooking as deleteBookingApi,
   getBookings,
+  updateBooking as updateBookingApi,
+  updateGuest as updateGuestApi,
 } from "./data-service";
-import { redirect } from "next/navigation";
 export const updateGuest = async (formData) => {
   const session = await auth();
   if (!session) throw new Error("you must be logged in");
@@ -63,7 +63,6 @@ export const createBooking = async (bookingData, formData) => {
     hasBreakfast: false,
     status: "unconfirmed",
   };
-  console.log(newBooking);
   createBookingApi(newBooking);
   revalidatePath(`/cabins/${bookingData.cabinId}`);
 };

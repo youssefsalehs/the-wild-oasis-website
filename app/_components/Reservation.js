@@ -1,9 +1,8 @@
-import React from "react";
-import DateSelector from "./DateSelector";
-import ReservationForm from "./ReservationForm";
-import { getBookedDatesByCabinId, getSettings } from "../_lib/data-service";
 import { auth } from "../_lib/auth";
+import { getBookedDatesByCabinId, getSettings } from "../_lib/data-service";
+import DateSelector from "./DateSelector";
 import LoginMessage from "./LoginMessage";
+import ReservationForm from "./ReservationForm";
 
 export default async function Reservation({ cabin }) {
   const session = await auth();

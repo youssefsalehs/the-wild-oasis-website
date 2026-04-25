@@ -1,10 +1,10 @@
-import Navigation from '@/app/_components/Navigation';
-import Logo from '@/app/_components/Logo';
+import Logo from "@/app/_components/Logo";
+import Navigation from "@/app/_components/Navigation";
 
 function Header() {
   return (
-    <header className='border-b border-primary-900 px-8 py-5'>
-      <div className='flex justify-center md:justify-between items-center max-w-7xl mx-auto flex-wrap gap-5'>
+    <header className="border-b border-primary-900 px-8 py-5">
+      <div className="flex justify-center md:justify-between items-center max-w-7xl mx-auto flex-wrap gap-5">
         <Logo />
         <Navigation />
       </div>

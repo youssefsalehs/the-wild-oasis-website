@@ -1,10 +1,8 @@
 "use client";
-import React, { useState } from "react";
-import { updateGuest } from "../_lib/actions";
 import { useFormStatus } from "react-dom";
+import { updateGuest } from "../_lib/actions";
 
 export default function UpdateProfileForm({ children, guest }) {
-  const [count, setCount] = useState(0);
   const { fullName, nationality, email, nationalID, countryFlag } = guest;
   return (
     <form

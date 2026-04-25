@@ -1,6 +1,6 @@
+import Header from "@/app/_components/Header";
 import "@/app/_styles/globals.css";
 import { Josefin_Sans } from "next/font/google";
-import Header from "@/app/_components/Header";
 import { ReservationProvider } from "./_components/ReservationContext";
 export const metadata = {
   title: {
